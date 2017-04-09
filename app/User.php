@@ -26,11 +26,15 @@ class User extends Authenticatable
 
     public $timestamps = false;
     protected $hidden = [
-        'password', 'remember_token',
+         'remember_token',
     ];
 
-     public function contract_detail()
+    public function contract_detail()
     {
         return $this->hasMany('App\Contract_detail','staff_id');
+    }
+    public function client_detail()
+    {
+        return $this->hasMany('App\Contract_detail','client_id');
     }
 }

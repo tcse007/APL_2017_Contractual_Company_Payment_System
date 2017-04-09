@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2" style="margin-top:50px;">
+       <div class="col-md-8 col-md-offset-2" style="margin-top:50px;">
             <h1> User Request</h1><hr>
             <div class="panel panel-default" >
 
@@ -12,27 +12,25 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Name</th>   
-                                <th>Phone Number</th> 
+                                <th>Staff Name</th> 
+                                <th>Client Name</th>  
                                 <th>Working Day</th> 
-                                <th>Payment</th> 
+                                <th>Payment</th>
                                 <th style="text-align:center">Action</th>
                             </tr>
                         </thead>
                         <tbody>       
                             @foreach($contract_details as $contract_detail)
                             <tr>
-                                @if(empty($contract_detail->staff_id)) 
-                                <td>{{$contract_detail->user->name}}</td>
-                                <td>{{$contract_detail->user->contact_no}}</td>
+                                @if($contract_detail->Active == 0 && !empty($contract_detail->staff_id)) 
+
+                                <td>{{$contract_detail->staff->name}}</td>
+                                <td>{{$contract_detail->client->name}}</td>
                                 <td>{{$contract_detail->monthly_workingday}}</td>
                                 <td>{{$contract_detail->payment_from_client_monthly}}</td>
-                               
-                                <td style="text-align:center">  
+                               <td style="text-align:center">  
 
-                                    <a  href="<?=URL::to('admin/send_request',array($contract_detail->id))?>"  class="btn btn-primary"><span class="glyphicon glyphicon-edit">Send Request</a>
-
-                                    <a  onclick="return check()" href="<?=URL::to('admin/home/user_delete',array($contract_detail->id))?>" class="btn btn-danger">
+                                    <a  onclick="return check()" href="<?=URL::to('admin/cancel_pending_request',array($contract_detail->id))?>" class="btn btn-danger">
 
                                         <span class="glyphicon glyphicon-trash"></span>Detete</a>
                                     </td>

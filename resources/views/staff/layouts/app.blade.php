@@ -43,7 +43,8 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                       <li><a href="{{url('staff/home')}}"> Home</a></li>
+                       <li><a href="{{url('staff/active_contract')}}">Active Contract</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

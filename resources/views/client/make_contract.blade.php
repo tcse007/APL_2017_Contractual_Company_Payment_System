@@ -26,16 +26,12 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Starting Date</label>
+                            <label for="start_date" class="col-md-4 control-label">Starting Date</label>
 
                             <div class="col-md-6">
-                                <input id="username" type="text" class="form-control" name="start_date" value="{{ old('username') }}" required>
+                                <input id="start_date" type="text" class="form-control" name="start_date" value="{{ old('start_date') }}" required>
 
-                                @if ($errors->has('username'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
-                                @endif
+
                             </div>
                         </div>
 
@@ -43,13 +39,8 @@
                             <label for="email" class="col-md-4 control-label">Payment</label>
 
                             <div class="col-md-6">
-                                <input id="phonenumber" type="text" class="form-control" name="payment_from_client_monthly" value="{{ old('phonenumber') }}" required>
+                                <input id="phonenumber" type="text" class="form-control" name="payment_from_client_monthly" value="{{ old('phonenumber') }}" required autofocus>
 
-                                @if ($errors->has('phonenumber'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('phonenumber') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
@@ -57,7 +48,7 @@
                             <label for="email" class="col-md-4 control-label">Month Limit</label>
 
                             <div class="col-md-6">
-                                <input id="email"  class="form-control" name="month_limit" value="{{ old('email') }}" required>
+                                <input id="email"  class="form-control" name="month_limit" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">

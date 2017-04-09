@@ -3,11 +3,11 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2" style="margin-top:50px;">
-            <h1> User Request</h1><hr>
+        
+            <div class="col-md-8 col-md-offset-2" style="margin-top:50px;">
+            <h1> User </h1><hr>
             <div class="panel panel-default" >
-
-                <div class="panel-heading">User Listing</div>
+                
                 <div class="panel-body">                     
                     <table class="table table-bordered">
                         <thead>
@@ -16,42 +16,39 @@
                                 <th>Phone Number</th> 
                                 <th>Role Name</th> 
                                 <th>Active</th> 
-
+     
                                 <th style="text-align:center">Action</th>
                             </tr>
                         </thead>
                         <tbody>       
-                           @foreach($users as $user)
-                                @if($user->rolename!='Admin' && $user->approve == 0)                          
+                            @foreach($users as $user)
+                                @if($user->rolename!='Admin' && $user->approve == 1)                          
                                     <tr>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->contact_no}}</td>
                                         <td>{{$user->rolename}}</td>
-                                        @if($user->approve==1)
+                                        
                                             <td>Approved</td>
-                                        @else
-                                            <td>Not Approved</td>
-                                        @endif
-                                        <td style="text-align:center">  
+                                        <td style="text-align:center"> 
+
+                                             <a  onclick="return check()" href="<?=URL::to('admin/home/user_disable',array($user->id))?>" class="btn btn-warning">
                                             
-                                            <a  href="<?=URL::to('admin/home/user_update',array($user->id))?>"  class="btn btn-primary"><span class="glyphicon glyphicon-edit">Approve</a>
+                                                <span class="glyphicon glyphicon-trash"></span>Disable</a>
+                                            
                 
-                                            <a  onclick="return check()" href="<?=URL::to('admin/home/deleteunregistereduser',array($user->id))?>" class="btn btn-danger">
-                                            <span class="glyphicon glyphicon-trash"></span>Detete</a>
-
-
-                                            </td>
+                                            <a  onclick="return check()" href="<?=URL::to('admin/home/user_delete',array($user->id))?>" class="btn btn-danger">
                                             
+                                                <span class="glyphicon glyphicon-trash"></span>Detete</a>
+                                            </td>
+
                                         </tr>
                                     @endif
                                 @endforeach
-                                
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 

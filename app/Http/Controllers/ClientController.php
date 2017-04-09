@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contract_detail;
+use App\Client_payment;
 use Auth;
 
 class ClientController extends Controller
@@ -22,4 +23,28 @@ class ClientController extends Controller
    var_dump($date);
    return redirect('client/home');
  }
+
+
+  public function active_contract_delete($id){
+   Contract_detail::find($id)->delete();    
+      return redirect('client/home');
+  }
+
+
+  public function send_many(Request $request){
+   $client_payment= new Client_payment();
+   $client_payment->contract_id=$request->contract_id;
+   $client_payment->payment_serial=$request->payment_serial;
+   $client_payment->amount_paid=$request->amount_paid;
+   $date=$request->date;
+   $date = strtotime($date);
+   $new_date=date('Y-m-d', $date);
+   $client_payment->date=$new_date;
+   $client_payment->save();
+   //var_dump($date);
+   return redirect('client/home');
+ }
+
+
+ 
 }

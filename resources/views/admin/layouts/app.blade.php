@@ -8,6 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    
+    
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
@@ -55,9 +57,14 @@
 
 
                        <li><a href="{{url('admin/home')}}"> Home</a></li>
-                       <li><a href="{{url('admin/contract_request')}}">Contract Request</a></li>
-                       <li><a href="">Active Contract</a></li>
+                       <li><a href="{{url('admin/active_user')}}">User</a></li>
+                       <li><a href="{{url('admin/active_contract')}}">Active Contract</a></li>
+                       <li><a href="{{url('admin/pending')}}">Pending Contract</a></li>
                        <li><a href="{{url('admin/user_request')}}">User Request</a></li>
+                       <li><a href="{{url('admin/home')}}">Contract Request</a></li>
+                       <li><a href="{{url('admin/economical_status')}}">Total Economical Status</a></li>
+
+
                        <!-- <li><a href="">Active Contract</a></li> -->
 
                    </ul>
@@ -99,5 +106,6 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 </html>

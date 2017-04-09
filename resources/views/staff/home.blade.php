@@ -12,7 +12,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th>Name</th>   
+                                <th>Client Name</th>   
                                 <th>Phone Number</th> 
                                 <th>Payment</th> 
                                 <th>Starting Date</th> 
@@ -23,21 +23,22 @@
                         
                         @foreach($users->contract_detail as $contract_detail)
                             <tr>
-                               
-                                <td>{{$contract_detail->user->name}}</td>
-                                <td>{{$contract_detail->user->contact_no}}</td>
-                                <td>{{$contract_detail->payment_for_staff_monthly}}</td>
-                                <td>{{$contract_detail->start_date}}</td>
+                               @if($contract_detail->Active != 1)
+                                <td><center>{{$contract_detail->client->name}}</center></td>
+                                <td><center>{{$contract_detail->client->contact_no}}</center></td>
+                                <td><center>{{$contract_detail->payment_for_staff_monthly}}</center></td>
+                                <td><center>{{$contract_detail->start_date}}</center></td>
                                 
                                
                                 <td style="text-align:center">  
 
-                                    <a  href="<?=URL::to('admin/send_request',array($contract_detail->id))?>"  class="btn btn-primary"><span class="glyphicon glyphicon-edit">Send Request</a>
+                                    <a  href="<?=URL::to('staff/accept',array($contract_detail->id))?>"  class="btn btn-primary"><span class="glyphicon glyphicon-edit">Accept</a>
 
-                                    <a  onclick="return check()" href="<?=URL::to('admin/home/user_delete',array($contract_detail->id))?>" class="btn btn-danger">
+                                    <a  onclick="return check()" href="<?=URL::to('staff/delete',array($contract_detail->id))?>" class="btn btn-danger">
 
                                         <span class="glyphicon glyphicon-trash"></span>Detete</a>
                                     </td>
+                                @endif
                                   
                                 @endforeach
                            
